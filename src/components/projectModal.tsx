@@ -52,7 +52,7 @@ const ProjectModal = ({
           <FontAwesomeIcon icon={faXmark} className="h-5 w-5" />
         </button>
 
-        <div className="rounded-xl overflow-hidden bg-stone-100 aspect-video flex items-center justify-center mb-3">
+        <div className="rounded-xl overflow-hidden bg-stone-100 aspect-video flex items-center justify-center my-3">
           {asset.type === "image" ? (
             <img
               src={asset.src}
