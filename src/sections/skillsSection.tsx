@@ -1,22 +1,36 @@
+import { skillCategories } from "../data/skills";
+
 const SkillsSection = () => {
   return (
-    <div className="h-screen bg-[#C77DFF] w-full flex flex-row items-center md:justify-center">
-      <div className="flex flex-col m-5 md:p-10 md:w-[40rem] text-black">
-        <h1 className="font-bold text-xl md:text-3xl">
-          Some skills of mine...
-        </h1>
-        <ul className="list-disc m-5 text-xs md:text-sm">
-          <li>Python</li>
-          <li>TypeScript</li>
-          <li>React</li>
-          <li>Angular</li>
-          <li>FastAPI</li>
-          <li>Flask</li>
-          <li>SQL</li>
-          <li>GIT</li>
-        </ul>
+    <section
+      id="skills"
+      className="scroll-mt-16 py-24 border-t border-[#44403C]/10 px-6 md:px-10"
+    >
+      <div className="max-w-5xl mx-auto">
+        <h2 className="font-display font-bold text-3xl md:text-5xl mb-10">
+          Skills
+        </h2>
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+          {skillCategories.map(({ category, skills }) => (
+            <div key={category}>
+              <h3 className="text-xs uppercase tracking-widest opacity-50 mb-3">
+                {category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-full border border-[#44403C]/25 text-xs md:text-sm transition-colors duration-200 cursor-default hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

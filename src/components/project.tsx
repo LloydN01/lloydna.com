@@ -1,102 +1,53 @@
-import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import type { Project as ProjectType, ProjectAsset } from "../data/projects";
 
 const Project = ({
-  name,
-  subHeading,
-  role,
-  description,
-  technologies,
-  assets,
-  github_link,
+  project,
+  onOpen,
 }: {
-  name: string;
-  subHeading: string;
-  role: string;
-  description: string;
-  technologies: string;
-  assets: { src: string; alt?: string; type: string }[];
-  github_link: string;
+  project: ProjectType;
+  onOpen: () => void;
 }) => {
-  const [carouselIndex, setCarouselIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCarouselIndex((carouselIndex + 1) % assets.length);
-  };
-
-  const prevSlide = () => {
-    setCarouselIndex((carouselIndex - 1 + assets.length) % assets.length);
-  };
+  const thumb = project.assets.find(
+    (a): a is Extract<ProjectAsset, { type: "image" }> => a.type === "image"
+  );
 
   return (
-    <div className="flex flex-col h-screen mx-auto md:p-10 md:w-[40rem]">
-      <div className="m-5 md:m-0">
-        <h3 className="font-bold text-xl md:text-3xl">{name}</h3>
-        <h5 className="font-bold italic text-xs md:text-xl">{subHeading}</h5>
-        <h6 className="font-bold text-xs md:text-sm">{role}</h6>
-        <p className="project-description text-xs md:text-sm">{description}</p>
-        <p className="project-tech text-xs md:text-sm">
-          <b>Technologies:</b> {technologies}
-        </p>
-        <p className="project-github text-xs md:text-sm mt-5">
-          <a
-            href={github_link}
-            target="_blank"
-            rel="noreferrer"
-            className="underline"
-          >
-            View on GitHub
-          </a>
-        </p>
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group text-left cursor-pointer"
+    >
+      <div className="rounded-xl overflow-hidden aspect-video bg-stone-100 mb-4">
+        {thumb && (
+          <img
+            src={thumb.src}
+            alt={thumb.alt}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        )}
       </div>
-      <div className="flex flex-col flex-grow text-center p-3 md:p-0">
-        <div className="project-carousel flex justify-center flex-grow">
-          {assets.map((asset, index) => (
-            <div
-              key={asset.src}
-              className={`w-full h-full flex items-center justify-center ${
-                index === carouselIndex ? "block" : "hidden"
-              }`}
-            >
-              {asset.type === "image" ? (
-                <img
-                  src={asset.src}
-                  alt={asset.alt}
-                  className="rounded-xl max-h-[10rem]"
-                />
-              ) : (
-                <iframe
-                  src={asset.src}
-                  className="rounded-xl max-w-[13rem] md:max-w-none md:h-[10rem]"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="carousel-buttons space-x-10">
-          <button
-            type="button"
-            onClick={prevSlide}
-            className="highlight"
-            title="Previous Slide"
+      <h3 className="font-display text-xl md:text-2xl font-bold group-hover:text-[#F97316] transition-colors duration-200">
+        {project.name}
+      </h3>
+      <p className="italic text-xs md:text-sm opacity-60 mt-1">
+        {project.subHeading}
+      </p>
+      <div className="flex flex-wrap gap-2 mt-3">
+        {project.technologies.slice(0, 4).map((tech) => (
+          <span
+            key={tech}
+            className="px-2 py-1 text-xs rounded-full border border-[#44403C]/25 transition-colors duration-200 hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
           >
-            <FontAwesomeIcon icon={faCaretLeft} className="h-[3rem]" />
-          </button>
-          <button
-            type="button"
-            onClick={nextSlide}
-            className="highlight"
-            title="Next Slide"
-          >
-            <FontAwesomeIcon icon={faCaretRight} className="h-[3rem]" />
-          </button>
-        </div>
+            {tech}
+          </span>
+        ))}
+        {project.technologies.length > 4 && (
+          <span className="px-2 py-1 text-xs opacity-50">
+            +{project.technologies.length - 4}
+          </span>
+        )}
       </div>
-    </div>
+    </button>
   );
 };
 
