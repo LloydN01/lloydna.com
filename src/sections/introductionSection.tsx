@@ -73,7 +73,7 @@ const IntroductionSection = () => {
           {highlights.map((highlight) => (
             <span
               key={highlight}
-              className="px-3 py-1 rounded-full border border-[#44403C]/25 text-xs md:text-sm font-medium transition-colors duration-200 cursor-default hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
+              className="px-3 py-1 rounded-full border border-[var(--color-border)]/25 text-xs md:text-sm font-medium transition-colors duration-200 cursor-default hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
             >
               {highlight}
             </span>

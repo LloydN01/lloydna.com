@@ -17,7 +17,7 @@ const Project = ({
       onClick={onOpen}
       className="group text-left cursor-pointer"
     >
-      <div className="rounded-xl overflow-hidden aspect-video bg-stone-100 mb-4">
+      <div className="rounded-xl overflow-hidden aspect-video bg-[var(--color-muted)] mb-4">
         {thumb && (
           <img
             src={thumb.src}
@@ -36,7 +36,7 @@ const Project = ({
         {project.technologies.slice(0, 4).map((tech) => (
           <span
             key={tech}
-            className="px-2 py-1 text-xs rounded-full border border-[#44403C]/25 transition-colors duration-200 hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
+            className="px-2 py-1 text-xs rounded-full border border-[var(--color-border)]/25 transition-colors duration-200 hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
           >
             {tech}
           </span>

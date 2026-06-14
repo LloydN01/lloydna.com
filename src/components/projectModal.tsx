@@ -40,7 +40,7 @@ const ProjectModal = ({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-xl border border-[#44403C]/10"
+        className="bg-[var(--color-surface)] rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative shadow-xl border border-[var(--color-border)]/10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -52,7 +52,7 @@ const ProjectModal = ({
           <FontAwesomeIcon icon={faXmark} className="h-5 w-5" />
         </button>
 
-        <div className="rounded-xl overflow-hidden bg-stone-100 aspect-video flex items-center justify-center my-4">
+        <div className="rounded-xl overflow-hidden bg-[var(--color-muted)] aspect-video flex items-center justify-center my-4">
           {asset.type === "image" ? (
             <img
               src={asset.src}
@@ -106,7 +106,7 @@ const ProjectModal = ({
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 text-xs rounded-full border border-[#44403C]/25 transition-colors duration-200 cursor-default hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
+              className="px-2 py-1 text-xs rounded-full border border-[var(--color-border)]/25 transition-colors duration-200 cursor-default hover:bg-[#F97316] hover:text-white hover:border-[#F97316]"
             >
               {tech}
             </span>
