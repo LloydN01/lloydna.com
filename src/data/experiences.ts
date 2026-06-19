@@ -13,10 +13,10 @@ export const experiences: Experience[] = [
     period: "February 2025 – Present",
     location: "Perth, WA",
     description: [
-      "Delivered full-stack features for an internal tool using React/TypeScript, Go/Gin and PostgreSQL, including custom middleware and role-based access control",
-      "Deployed cloud-native APIs built with ASP.NET Core and Java Spring Boot as Docker containers to AWS ECS clusters, with authentication middleware, SLOs/SLIs monitoring and Clean Architecture",
-      "Engineered enterprise-grade OAuth2/OIDC authentication integrated with CBA's SSO infrastructure, with secure token storage and refresh flows",
-      "Optimised GitHub Actions CI/CD pipelines with reusable workflows and environment-based deployment stages, implementing multi-layered testing including unit, integration, contract and functional tests",
+      "Built core features for CBA's Blameless Postmortem platform using React/TypeScript, Go/Gin, and PostgreSQL, including custom middleware and role-based access control, helping track 200+ postmortems from creation through review and approval",
+      "Designed and implemented OAuth2/OIDC authentication integrated with CBA's SSO to power a secure, auditable postmortem approval workflow, cutting average time-to-approval by 28% and accelerating incident learnings across teams",
+      "Deployed cloud-native APIs built with ASP.NET Core and Java Spring Boot as Docker containers to AWS ECS clusters, with authentication middleware, SLOs/SLIs monitoring, and Clean Architecture",
+      "Optimised GitHub Actions CI/CD pipelines with reusable workflows and environment-based deployment stages, implementing multi-layered testing including unit, integration, contract, and functional tests",
     ],
   },
   {
